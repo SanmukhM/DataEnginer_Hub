@@ -1,0 +1,19 @@
+1. In the Cloud Console, on the Navigation menu (Navigation menu), click Compute Engine > VM instances, and then click Create Instance.
+2. Select:region and zone
+3. In the Machine configuration section, for Series select E2.
+4. In the Boot disk section, click Change to begin configuring your boot disk. Under Operating system select Windows Server and 
+under Version select Windows Server 2022 Datacenter, and then click Select. Leave all other settings as their defaults.
+
+
+#########################################
+>>To see whether the server instance is ready for an RDP connection, run the following command at your Cloud Shell terminal
+command line and please make to replace [instance] with the VM Instance that you created earlier.
+
+Cloud Shell Command : gcloud compute instances get-serial-port-output [instance] --zone=ZONE
+
+#########################################
+>>To set a password for logging into the RDP, run the following command in Cloud Shell. Be sure you replace [instance] with 
+the VM Instance that you created and set [username] as admin.
+Cloud Shell Command : gcloud compute reset-windows-password [instance] --zone ZONE --user [username]
+#########################################
+If asked Would you like to set or reset the password for [admin] (Y/n)?, enter Y. Record the password for use in later steps to connect.
