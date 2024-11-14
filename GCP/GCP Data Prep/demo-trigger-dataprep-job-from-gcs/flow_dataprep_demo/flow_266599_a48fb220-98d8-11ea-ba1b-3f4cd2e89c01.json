@@ -1,0 +1,3373 @@
+{
+  "type": "flow",
+  "kind": "artifact",
+  "metadata": {
+    "trifactaVersion": "6.8.2+475.20200429004350.b56247a",
+    "exportedAt": "2020-05-18T07:24:42.946Z",
+    "exportedBy": 397,
+    "uuid": "a48fb220-98d8-11ea-ba1b-3f4cd2e89c01",
+    "primaryFlowIds": [
+      266599
+    ],
+    "edition": "Dataprep",
+    "lastMigration": "20200211125101"
+  },
+  "data": {
+    "artifacts": [],
+    "connections": [],
+    "flows": [
+      {
+        "id": 266599,
+        "name": "Customer Sales Analysis",
+        "description": "",
+        "flownodes": [
+          {
+            "id": 1427915,
+            "scriptId": 1282368,
+            "flowNodeId": null,
+            "wrangled": false,
+            "referenceId": null
+          },
+          {
+            "id": 1427919,
+            "scriptId": 1313449,
+            "flowNodeId": null,
+            "wrangled": true,
+            "referenceId": null
+          },
+          {
+            "id": 1427928,
+            "scriptId": 1313458,
+            "flowNodeId": null,
+            "wrangled": true,
+            "referenceId": null
+          },
+          {
+            "id": 1427931,
+            "scriptId": 1313461,
+            "flowNodeId": null,
+            "wrangled": true,
+            "referenceId": null
+          },
+          {
+            "id": 1427932,
+            "scriptId": 1313462,
+            "flowNodeId": null,
+            "wrangled": true,
+            "referenceId": null
+          },
+          {
+            "id": 1430843,
+            "scriptId": 1316337,
+            "flowNodeId": null,
+            "wrangled": false,
+            "referenceId": null
+          }
+        ],
+        "flowedges": [
+          {
+            "id": 1282015,
+            "inFlowNodeId": 1427915,
+            "inPortId": null,
+            "outFlowNodeId": 1427919,
+            "outPortId": null
+          },
+          {
+            "id": 1282022,
+            "inFlowNodeId": 1427919,
+            "inPortId": null,
+            "outFlowNodeId": 1427931,
+            "outPortId": null
+          },
+          {
+            "id": 1282023,
+            "inFlowNodeId": 1427919,
+            "inPortId": null,
+            "outFlowNodeId": 1427932,
+            "outPortId": null
+          },
+          {
+            "id": 1284353,
+            "inFlowNodeId": 1430843,
+            "inPortId": null,
+            "outFlowNodeId": 1427928,
+            "outPortId": null
+          },
+          {
+            "id": 1284354,
+            "inFlowNodeId": 1427928,
+            "inPortId": null,
+            "outFlowNodeId": 1427919,
+            "outPortId": 2
+          }
+        ],
+        "references": [],
+        "flowrunparameteroverrides": [],
+        "recipes": [
+          {
+            "id": 1282368,
+            "name": "Dynamic Customer CSV File",
+            "description": null,
+            "active": true,
+            "nextPortId": 1,
+            "steps": [
+              {
+                "portId": null,
+                "task": {
+                  "annotations": {
+                    "hidden": true
+                  },
+                  "kind": "task",
+                  "type": "Load",
+                  "parameters": {
+                    "format": {
+                      "annotations": {},
+                      "kind": "func",
+                      "type": "FormatBlob",
+                      "parameters": {}
+                    },
+                    "location": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": "id://629078"
+                    },
+                    "enableLineage": {
+                      "kind": "constant",
+                      "type": "Bool",
+                      "value": true
+                    },
+                    "as": {
+                      "kind": "array",
+                      "type": "Array",
+                      "value": [
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column1"
+                        }
+                      ]
+                    }
+                  },
+                  "outputName": "original_datasource_629078"
+                },
+                "tableData": null,
+                "columnMetadata": null,
+                "id": 7181590,
+                "hash": "bef11c3472cb2caffe22255c469dbc7c14d62c2f",
+                "pbemappingartifacts": [],
+                "targetmappingartifacts": []
+              },
+              {
+                "portId": null,
+                "task": {
+                  "annotations": {
+                    "outputColumnAnnotations": {
+                      "column1": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      }
+                    }
+                  },
+                  "kind": "task",
+                  "type": "SplitRows",
+                  "parameters": {
+                    "on": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": "\n"
+                    },
+                    "col": {
+                      "kind": "column",
+                      "type": "Column",
+                      "value": "column1",
+                      "relation": null
+                    },
+                    "quote": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": "\""
+                    },
+                    "quoteEscapeChar": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": "\""
+                    }
+                  },
+                  "outputName": null
+                },
+                "tableData": null,
+                "columnMetadata": null,
+                "id": 7181589,
+                "hash": "5e0dbcfc803cc40c01c0298ba18470aabb16ab81",
+                "pbemappingartifacts": [],
+                "targetmappingartifacts": []
+              },
+              {
+                "portId": null,
+                "task": {
+                  "annotations": {
+                    "outputColumnAnnotations": {
+                      "column2": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column3": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column4": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column5": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column6": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column7": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column8": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column9": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column10": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column11": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column12": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column13": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column14": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column15": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column16": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column17": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column18": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column19": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column20": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      }
+                    }
+                  },
+                  "kind": "task",
+                  "type": "Split",
+                  "parameters": {
+                    "col": {
+                      "kind": "column",
+                      "type": "Column",
+                      "value": "column1",
+                      "relation": null
+                    },
+                    "type": {
+                      "kind": "bundle",
+                      "type": "Bundle",
+                      "value": "on"
+                    },
+                    "on": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": ","
+                    },
+                    "limit": {
+                      "kind": "constant",
+                      "type": "Integer",
+                      "value": 18
+                    },
+                    "quote": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": "\""
+                    },
+                    "as": {
+                      "kind": "array",
+                      "type": "Array",
+                      "value": [
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column2"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column3"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column4"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column5"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column6"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column7"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column8"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column9"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column10"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column11"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column12"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column13"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column14"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column15"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column16"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column17"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column18"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column19"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column20"
+                        }
+                      ]
+                    }
+                  },
+                  "outputName": null
+                },
+                "tableData": null,
+                "columnMetadata": null,
+                "id": 7181592,
+                "hash": "027a18ec9a841afa4b569401dc0e8a026055e86c",
+                "pbemappingartifacts": [],
+                "targetmappingartifacts": []
+              },
+              {
+                "portId": null,
+                "task": {
+                  "annotations": {
+                    "outputColumnAnnotations": {
+                      "column2": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column3": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column4": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column5": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column6": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column7": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column8": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column9": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column10": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column11": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column12": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column13": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column14": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column15": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column16": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column17": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column18": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column19": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column20": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      }
+                    }
+                  },
+                  "kind": "task",
+                  "type": "Replace",
+                  "parameters": {
+                    "with": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": "\""
+                    },
+                    "col": {
+                      "kind": "array",
+                      "type": "Array",
+                      "value": [
+                        {
+                          "kind": "column",
+                          "type": "Wildcard",
+                          "value": "*",
+                          "annotations": {
+                            "includeLineage": false,
+                            "includeFileLineage": false
+                          },
+                          "relation": null
+                        }
+                      ]
+                    },
+                    "type": {
+                      "kind": "bundle",
+                      "type": "Bundle",
+                      "value": "on"
+                    },
+                    "on": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": "\"\""
+                    },
+                    "global": {
+                      "kind": "constant",
+                      "type": "Bool",
+                      "value": true
+                    }
+                  },
+                  "outputName": null
+                },
+                "tableData": null,
+                "columnMetadata": null,
+                "id": 7181591,
+                "hash": "d96a725cf2f60e7dc8a34e3a89906fde1c83ab5a",
+                "pbemappingartifacts": [],
+                "targetmappingartifacts": []
+              },
+              {
+                "portId": null,
+                "task": {
+                  "annotations": {
+                    "outputColumnAnnotations": {
+                      "column2": {
+                        "type": [
+                          "Integer"
+                        ],
+                        "_likely_types": [
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Float"
+                          ],
+                          [
+                            "String"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ]
+                        ]
+                      },
+                      "column3": {
+                        "type": [
+                          "Datetime",
+                          "mm-dd-yy",
+                          "mm*dd*yy"
+                        ],
+                        "_likely_types": [
+                          [
+                            "Datetime",
+                            "mm-dd-yy",
+                            "mm*dd*yy"
+                          ],
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ]
+                        ]
+                      },
+                      "column4": {
+                        "type": [
+                          "Datetime",
+                          "mm-dd-yy",
+                          "mm*dd*yy"
+                        ],
+                        "_likely_types": [
+                          [
+                            "Datetime",
+                            "mm-dd-yy",
+                            "mm*dd*yy"
+                          ],
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ]
+                        ]
+                      },
+                      "column5": {
+                        "type": [
+                          "Integer"
+                        ],
+                        "_likely_types": [
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Float"
+                          ],
+                          [
+                            "String"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ]
+                        ]
+                      },
+                      "column6": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column7": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column8": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column9": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column10": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column11": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column12": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "Map"
+                          ],
+                          [
+                            "Ipaddress"
+                          ]
+                        ]
+                      },
+                      "column13": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column14": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column15": {
+                        "type": [
+                          "State"
+                        ],
+                        "_likely_types": [
+                          [
+                            "State"
+                          ],
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ]
+                        ]
+                      },
+                      "column16": {
+                        "type": [
+                          "Integer"
+                        ],
+                        "_likely_types": [
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Float"
+                          ],
+                          [
+                            "String"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ]
+                        ]
+                      },
+                      "column17": {
+                        "type": [
+                          "Phone"
+                        ],
+                        "_likely_types": [
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column18": {
+                        "type": [
+                          "Emailaddress"
+                        ],
+                        "_likely_types": [
+                          [
+                            "Emailaddress"
+                          ],
+                          [
+                            "Url"
+                          ],
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ]
+                        ]
+                      },
+                      "column19": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column20": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      }
+                    }
+                  },
+                  "kind": "task",
+                  "type": "Replace",
+                  "parameters": {
+                    "with": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": ""
+                    },
+                    "col": {
+                      "kind": "array",
+                      "type": "Array",
+                      "value": [
+                        {
+                          "kind": "column",
+                          "type": "Wildcard",
+                          "value": "*",
+                          "annotations": {
+                            "includeLineage": false,
+                            "includeFileLineage": false
+                          },
+                          "relation": null
+                        }
+                      ]
+                    },
+                    "type": {
+                      "kind": "bundle",
+                      "type": "Bundle",
+                      "value": "on"
+                    },
+                    "on": {
+                      "kind": "constant",
+                      "type": "Pattern",
+                      "value": "{start}\"|\"{end}"
+                    },
+                    "global": {
+                      "kind": "constant",
+                      "type": "Bool",
+                      "value": true
+                    }
+                  },
+                  "outputName": null
+                },
+                "tableData": null,
+                "columnMetadata": null,
+                "id": 7181593,
+                "hash": "b9248319a285663a6ff202dd1019525453d46c07",
+                "pbemappingartifacts": [],
+                "targetmappingartifacts": []
+              },
+              {
+                "portId": null,
+                "task": {
+                  "annotations": {
+                    "outputColumnAnnotations": {
+                      "IMSI": {
+                        "type": [
+                          "Integer"
+                        ],
+                        "_likely_types": [
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Float"
+                          ],
+                          [
+                            "String"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ]
+                        ]
+                      },
+                      "CONTRACT_END": {
+                        "type": [
+                          "Datetime",
+                          "mm-dd-yy",
+                          "mm*dd*yy"
+                        ],
+                        "_likely_types": [
+                          [
+                            "Datetime",
+                            "mm-dd-yy",
+                            "mm*dd*yy"
+                          ],
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ]
+                        ]
+                      },
+                      "CONTRACT_START": {
+                        "type": [
+                          "Datetime",
+                          "mm-dd-yy",
+                          "mm*dd*yy"
+                        ],
+                        "_likely_types": [
+                          [
+                            "Datetime",
+                            "mm-dd-yy",
+                            "mm*dd*yy"
+                          ],
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ]
+                        ]
+                      },
+                      "SUBSCRIBER_AGE": {
+                        "type": [
+                          "Integer"
+                        ],
+                        "_likely_types": [
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Float"
+                          ],
+                          [
+                            "String"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ]
+                        ]
+                      },
+                      "STATUS": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "WEB_CHAT_ID": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "COUNTRY": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "TITLE": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "FIRST_NAME": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "LAST_NAME": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "SSN": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "Map"
+                          ],
+                          [
+                            "Ipaddress"
+                          ]
+                        ]
+                      },
+                      "ADDRESS": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "CITY": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "STATE": {
+                        "type": [
+                          "State"
+                        ],
+                        "_likely_types": [
+                          [
+                            "State"
+                          ],
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ]
+                        ]
+                      },
+                      "ZIP": {
+                        "type": [
+                          "Integer"
+                        ],
+                        "_likely_types": [
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Float"
+                          ],
+                          [
+                            "String"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ]
+                        ]
+                      },
+                      "PHONE": {
+                        "type": [
+                          "Phone"
+                        ],
+                        "_likely_types": [
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "EMAIL": {
+                        "type": [
+                          "Emailaddress"
+                        ],
+                        "_likely_types": [
+                          [
+                            "Emailaddress"
+                          ],
+                          [
+                            "Url"
+                          ],
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ]
+                        ]
+                      },
+                      "TWITTER": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "OCCUPATION": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      }
+                    }
+                  },
+                  "kind": "task",
+                  "type": "Header",
+                  "parameters": {
+                    "sanitize": {
+                      "kind": "constant",
+                      "type": "Bool",
+                      "value": false
+                    },
+                    "as": {
+                      "kind": "array",
+                      "type": "Array",
+                      "value": [
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "IMSI"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "CONTRACT_END"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "CONTRACT_START"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "SUBSCRIBER_AGE"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "STATUS"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "WEB_CHAT_ID"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "COUNTRY"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "TITLE"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "FIRST_NAME"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "LAST_NAME"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "SSN"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "ADDRESS"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "CITY"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "STATE"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "ZIP"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "PHONE"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "EMAIL"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "TWITTER"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "OCCUPATION"
+                        }
+                      ]
+                    }
+                  },
+                  "outputName": null
+                },
+                "tableData": {
+                  "column2": "IMSI",
+                  "column3": "CONTRACT_END",
+                  "column4": "CONTRACT_START",
+                  "column5": "SUBSCRIBER_AGE",
+                  "column6": "STATUS",
+                  "column7": "WEB_CHAT_ID",
+                  "column8": "COUNTRY",
+                  "column9": "TITLE",
+                  "column10": "FIRST_NAME",
+                  "column11": "LAST_NAME",
+                  "column12": "SSN",
+                  "column13": "ADDRESS",
+                  "column14": "CITY",
+                  "column15": "STATE",
+                  "column16": "ZIP",
+                  "column17": "PHONE",
+                  "column18": "EMAIL",
+                  "column19": "TWITTER",
+                  "column20": "OCCUPATION"
+                },
+                "columnMetadata": null,
+                "id": 7181594,
+                "hash": "d0d1f78c77560226cd0a79e8af4b90bfde0270e1",
+                "pbemappingartifacts": [],
+                "targetmappingartifacts": []
+              }
+            ]
+          },
+          {
+            "id": 1313449,
+            "name": "Clean and Enrich",
+            "description": null,
+            "active": true,
+            "nextPortId": 3,
+            "steps": [
+              {
+                "portId": null,
+                "task": {
+                  "annotations": {
+                    "hidden": true
+                  },
+                  "kind": "task",
+                  "type": "Load",
+                  "parameters": {
+                    "format": {
+                      "annotations": {},
+                      "kind": "func",
+                      "type": "FormatBlob",
+                      "parameters": {}
+                    },
+                    "location": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": "portId://null"
+                    },
+                    "enableLineage": {
+                      "kind": "constant",
+                      "type": "Bool",
+                      "value": true
+                    },
+                    "as": {
+                      "kind": "array",
+                      "type": "Array",
+                      "value": [
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column1"
+                        }
+                      ]
+                    }
+                  },
+                  "outputName": "original_datasource_629078"
+                },
+                "tableData": null,
+                "columnMetadata": {
+                  "IMSI": {
+                    "id": "-7uoq5l"
+                  },
+                  "CONTRACT_END": {
+                    "id": "-q17azr"
+                  },
+                  "CONTRACT_START": {
+                    "id": "-8s16eo"
+                  },
+                  "SUBSCRIBER_AGE": {
+                    "id": "r9f7p"
+                  },
+                  "STATUS": {
+                    "id": "1e27wix"
+                  },
+                  "WEB_CHAT_ID": {
+                    "id": "74appq"
+                  },
+                  "COUNTRY": {
+                    "id": "sw79jt"
+                  },
+                  "TITLE": {
+                    "id": "p7gsiv"
+                  },
+                  "FIRST_NAME": {
+                    "id": "-fez7jn"
+                  },
+                  "LAST_NAME": {
+                    "id": "188vxx5"
+                  },
+                  "SSN": {
+                    "id": "labmjd"
+                  },
+                  "ADDRESS": {
+                    "id": "1dr9rzf"
+                  },
+                  "CITY": {
+                    "id": "-7utfuq"
+                  },
+                  "STATE": {
+                    "id": "p6zepy"
+                  },
+                  "ZIP": {
+                    "id": "labs60"
+                  },
+                  "PHONE": {
+                    "id": "p4m8e7"
+                  },
+                  "EMAIL": {
+                    "id": "owy5gt"
+                  },
+                  "TWITTER": {
+                    "id": "15s3xiw"
+                  },
+                  "OCCUPATION": {
+                    "id": "1six3zu"
+                  },
+                  "TRIFACTA__FILE_LINEAGE_INFO": {
+                    "id": "-1e3sm9c"
+                  }
+                },
+                "id": 7369804,
+                "hash": "3ffe643c9b167e021e360148bbba2915bf321094",
+                "pbemappingartifacts": [],
+                "targetmappingartifacts": []
+              },
+              {
+                "portId": 2,
+                "task": {
+                  "annotations": {
+                    "hidden": true
+                  },
+                  "kind": "task",
+                  "type": "Load",
+                  "parameters": {
+                    "location": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": "portId://2"
+                    },
+                    "format": {
+                      "annotations": {},
+                      "kind": "func",
+                      "type": "FormatBlob",
+                      "parameters": {}
+                    }
+                  },
+                  "outputName": "table_7f107d4d548055a7bc961a877e47e4525509b701"
+                },
+                "tableData": null,
+                "columnMetadata": {
+                  "Occupation Label": {
+                    "id": "4hv1rx6"
+                  },
+                  "Occupation Category": {
+                    "id": "3cyw4l4"
+                  }
+                },
+                "id": 7385956,
+                "hash": "2b287b72d95badbcab86ee0e6ed3089e538ff5da",
+                "pbemappingartifacts": [],
+                "targetmappingartifacts": []
+              },
+              {
+                "portId": null,
+                "task": {
+                  "annotations": {
+                    "outputColumnAnnotations": {
+                      "Occupation Category": {
+                        "type": [
+                          "Integer"
+                        ]
+                      }
+                    }
+                  },
+                  "kind": "task",
+                  "type": "Lookup",
+                  "parameters": {
+                    "table": {
+                      "kind": "table",
+                      "type": "Table",
+                      "value": "table_9eebc9694e1974f0a3c08d2b0b0576447c4ded6c"
+                    },
+                    "col": {
+                      "kind": "column",
+                      "type": "Column",
+                      "value": "OCCUPATION",
+                      "relation": "table_9eebc9694e1974f0a3c08d2b0b0576447c4ded6c"
+                    },
+                    "with": {
+                      "kind": "table",
+                      "type": "Table",
+                      "value": "table_7f107d4d548055a7bc961a877e47e4525509b701"
+                    },
+                    "key": {
+                      "kind": "column",
+                      "type": "Column",
+                      "value": "Occupation Label",
+                      "relation": "table_7f107d4d548055a7bc961a877e47e4525509b701"
+                    },
+                    "as": {
+                      "kind": "array",
+                      "type": "Array",
+                      "value": [
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "Occupation Category"
+                        }
+                      ]
+                    }
+                  },
+                  "outputName": null
+                },
+                "tableData": null,
+                "columnMetadata": {},
+                "id": 7385957,
+                "hash": "b1e767fa94988627589b617c6f9f81ff697cb6cb",
+                "pbemappingartifacts": [],
+                "targetmappingartifacts": []
+              }
+            ]
+          },
+          {
+            "id": 1313458,
+            "name": "Clean and Standardization",
+            "description": null,
+            "active": true,
+            "nextPortId": 1,
+            "steps": [
+              {
+                "portId": null,
+                "task": {
+                  "annotations": {
+                    "hidden": true
+                  },
+                  "kind": "task",
+                  "type": "Load",
+                  "parameters": {
+                    "format": {
+                      "annotations": {},
+                      "kind": "func",
+                      "type": "FormatBlob",
+                      "parameters": {}
+                    },
+                    "location": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": "portId://null"
+                    },
+                    "enableLineage": {
+                      "kind": "constant",
+                      "type": "Bool",
+                      "value": true
+                    },
+                    "as": {
+                      "kind": "array",
+                      "type": "Array",
+                      "value": [
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column1"
+                        }
+                      ]
+                    }
+                  },
+                  "outputName": "original_datasource_644653"
+                },
+                "tableData": null,
+                "columnMetadata": null,
+                "id": 7369850,
+                "hash": "72e9cb15c8e8a533596bc9aad25ce89aa268a66d",
+                "pbemappingartifacts": [],
+                "targetmappingartifacts": []
+              }
+            ]
+          },
+          {
+            "id": 1313461,
+            "name": "Group and Pivot",
+            "description": null,
+            "active": true,
+            "nextPortId": 1,
+            "steps": [
+              {
+                "portId": null,
+                "task": {
+                  "annotations": {
+                    "hidden": true
+                  },
+                  "kind": "task",
+                  "type": "Load",
+                  "parameters": {
+                    "format": {
+                      "annotations": {},
+                      "kind": "func",
+                      "type": "FormatBlob",
+                      "parameters": {}
+                    },
+                    "location": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": "portId://null"
+                    },
+                    "enableLineage": {
+                      "kind": "constant",
+                      "type": "Bool",
+                      "value": true
+                    },
+                    "as": {
+                      "kind": "array",
+                      "type": "Array",
+                      "value": [
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column1"
+                        }
+                      ]
+                    }
+                  },
+                  "outputName": "original_datasource_1427919"
+                },
+                "tableData": null,
+                "columnMetadata": null,
+                "id": 7369865,
+                "hash": "69e07a866beea89935785d3e8ebf7f17834e9be0",
+                "pbemappingartifacts": [],
+                "targetmappingartifacts": []
+              }
+            ]
+          },
+          {
+            "id": 1313462,
+            "name": "Customers Exceptions",
+            "description": null,
+            "active": true,
+            "nextPortId": 1,
+            "steps": [
+              {
+                "portId": null,
+                "task": {
+                  "annotations": {
+                    "hidden": true
+                  },
+                  "kind": "task",
+                  "type": "Load",
+                  "parameters": {
+                    "format": {
+                      "annotations": {},
+                      "kind": "func",
+                      "type": "FormatBlob",
+                      "parameters": {}
+                    },
+                    "location": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": "portId://null"
+                    },
+                    "enableLineage": {
+                      "kind": "constant",
+                      "type": "Bool",
+                      "value": true
+                    },
+                    "as": {
+                      "kind": "array",
+                      "type": "Array",
+                      "value": [
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column1"
+                        }
+                      ]
+                    }
+                  },
+                  "outputName": "original_datasource_1427919"
+                },
+                "tableData": null,
+                "columnMetadata": null,
+                "id": 7369866,
+                "hash": "69e07a866beea89935785d3e8ebf7f17834e9be0",
+                "pbemappingartifacts": [],
+                "targetmappingartifacts": []
+              }
+            ]
+          },
+          {
+            "id": 1316337,
+            "name": "Occupation Mapping Sheet",
+            "description": null,
+            "active": true,
+            "nextPortId": 1,
+            "steps": [
+              {
+                "portId": null,
+                "task": {
+                  "annotations": {
+                    "hidden": true
+                  },
+                  "kind": "task",
+                  "type": "Load",
+                  "parameters": {
+                    "format": {
+                      "annotations": {},
+                      "kind": "func",
+                      "type": "FormatBlob",
+                      "parameters": {}
+                    },
+                    "location": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": "id://646052"
+                    },
+                    "enableLineage": {
+                      "kind": "constant",
+                      "type": "Bool",
+                      "value": true
+                    },
+                    "as": {
+                      "kind": "array",
+                      "type": "Array",
+                      "value": [
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column1"
+                        }
+                      ]
+                    }
+                  },
+                  "outputName": "original_datasource_646052"
+                },
+                "tableData": null,
+                "columnMetadata": null,
+                "id": 7385949,
+                "hash": "fb53a15ce9ac787bbdd5420aafe668c70fd1d30c",
+                "pbemappingartifacts": [],
+                "targetmappingartifacts": []
+              },
+              {
+                "portId": null,
+                "task": {
+                  "annotations": {
+                    "outputColumnAnnotations": {
+                      "column1": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      }
+                    }
+                  },
+                  "kind": "task",
+                  "type": "SplitRows",
+                  "parameters": {
+                    "on": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": "\n"
+                    },
+                    "col": {
+                      "kind": "column",
+                      "type": "Column",
+                      "value": "column1",
+                      "relation": null
+                    },
+                    "quote": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": "\""
+                    },
+                    "quoteEscapeChar": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": "\""
+                    }
+                  },
+                  "outputName": null
+                },
+                "tableData": null,
+                "columnMetadata": null,
+                "id": 7385947,
+                "hash": "5e0dbcfc803cc40c01c0298ba18470aabb16ab81",
+                "pbemappingartifacts": [],
+                "targetmappingartifacts": []
+              },
+              {
+                "portId": null,
+                "task": {
+                  "annotations": {
+                    "outputColumnAnnotations": {
+                      "column2": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column3": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      }
+                    }
+                  },
+                  "kind": "task",
+                  "type": "Split",
+                  "parameters": {
+                    "col": {
+                      "kind": "column",
+                      "type": "Column",
+                      "value": "column1",
+                      "relation": null
+                    },
+                    "type": {
+                      "kind": "bundle",
+                      "type": "Bundle",
+                      "value": "on"
+                    },
+                    "on": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": ","
+                    },
+                    "quote": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": "\""
+                    },
+                    "as": {
+                      "kind": "array",
+                      "type": "Array",
+                      "value": [
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column2"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "column3"
+                        }
+                      ]
+                    }
+                  },
+                  "outputName": null
+                },
+                "tableData": null,
+                "columnMetadata": null,
+                "id": 7385951,
+                "hash": "0451827f103183ffa3787046a6648ae899a5cea7",
+                "pbemappingartifacts": [],
+                "targetmappingartifacts": []
+              },
+              {
+                "portId": null,
+                "task": {
+                  "annotations": {
+                    "outputColumnAnnotations": {
+                      "column2": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column3": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      }
+                    }
+                  },
+                  "kind": "task",
+                  "type": "Replace",
+                  "parameters": {
+                    "with": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": "\""
+                    },
+                    "col": {
+                      "kind": "array",
+                      "type": "Array",
+                      "value": [
+                        {
+                          "kind": "column",
+                          "type": "Wildcard",
+                          "value": "*",
+                          "annotations": {
+                            "includeLineage": false,
+                            "includeFileLineage": false
+                          },
+                          "relation": null
+                        }
+                      ]
+                    },
+                    "type": {
+                      "kind": "bundle",
+                      "type": "Bundle",
+                      "value": "on"
+                    },
+                    "on": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": "\"\""
+                    },
+                    "global": {
+                      "kind": "constant",
+                      "type": "Bool",
+                      "value": true
+                    }
+                  },
+                  "outputName": null
+                },
+                "tableData": null,
+                "columnMetadata": null,
+                "id": 7385950,
+                "hash": "2dc1a9b781786a56a14ec09897d2324c32774831",
+                "pbemappingartifacts": [],
+                "targetmappingartifacts": []
+              },
+              {
+                "portId": null,
+                "task": {
+                  "annotations": {
+                    "outputColumnAnnotations": {
+                      "column2": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "column3": {
+                        "type": [
+                          "Integer"
+                        ],
+                        "_likely_types": [
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Float"
+                          ],
+                          [
+                            "String"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ]
+                        ]
+                      }
+                    }
+                  },
+                  "kind": "task",
+                  "type": "Replace",
+                  "parameters": {
+                    "with": {
+                      "kind": "constant",
+                      "type": "String",
+                      "value": ""
+                    },
+                    "col": {
+                      "kind": "array",
+                      "type": "Array",
+                      "value": [
+                        {
+                          "kind": "column",
+                          "type": "Wildcard",
+                          "value": "*",
+                          "annotations": {
+                            "includeLineage": false,
+                            "includeFileLineage": false
+                          },
+                          "relation": null
+                        }
+                      ]
+                    },
+                    "type": {
+                      "kind": "bundle",
+                      "type": "Bundle",
+                      "value": "on"
+                    },
+                    "on": {
+                      "kind": "constant",
+                      "type": "Pattern",
+                      "value": "{start}\"|\"{end}"
+                    },
+                    "global": {
+                      "kind": "constant",
+                      "type": "Bool",
+                      "value": true
+                    }
+                  },
+                  "outputName": null
+                },
+                "tableData": null,
+                "columnMetadata": null,
+                "id": 7385952,
+                "hash": "6c465f92e350cee276a0fa0ae6454ba24485b37b",
+                "pbemappingartifacts": [],
+                "targetmappingartifacts": []
+              },
+              {
+                "portId": null,
+                "task": {
+                  "annotations": {
+                    "outputColumnAnnotations": {
+                      "Occupation Label": {
+                        "type": [
+                          "String"
+                        ],
+                        "_likely_types": [
+                          [
+                            "String"
+                          ],
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ],
+                          [
+                            "Map"
+                          ]
+                        ]
+                      },
+                      "Occupation Category": {
+                        "type": [
+                          "Integer"
+                        ],
+                        "_likely_types": [
+                          [
+                            "Integer"
+                          ],
+                          [
+                            "Float"
+                          ],
+                          [
+                            "String"
+                          ],
+                          [
+                            "Phone"
+                          ],
+                          [
+                            "SSN"
+                          ]
+                        ]
+                      }
+                    }
+                  },
+                  "kind": "task",
+                  "type": "Header",
+                  "parameters": {
+                    "sanitize": {
+                      "kind": "constant",
+                      "type": "Bool",
+                      "value": false
+                    },
+                    "as": {
+                      "kind": "array",
+                      "type": "Array",
+                      "value": [
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "Occupation Label"
+                        },
+                        {
+                          "kind": "constant",
+                          "type": "String",
+                          "value": "Occupation Category"
+                        }
+                      ]
+                    }
+                  },
+                  "outputName": null
+                },
+                "tableData": {
+                  "column2": "Occupation Label",
+                  "column3": "Occupation Category"
+                },
+                "columnMetadata": null,
+                "id": 7385953,
+                "hash": "4a9c14e2b26e67cc0e1f74527be327575b2301c3",
+                "pbemappingartifacts": [],
+                "targetmappingartifacts": []
+              }
+            ]
+          }
+        ],
+        "outputobjects": [
+          {
+            "id": 241726,
+            "execution": "dataflow",
+            "profiler": true,
+            "flowNodeId": 1427932,
+            "isAdhoc": true,
+            "publications": [],
+            "writesettings": [
+              {
+                "delim": ",",
+                "id": 330023,
+                "path": "gs://dataprep-staging-0b9ad034-9473-4777-98f1-0f3e643d0dce/vcoustenoble@trifacta.com/jobrun/Customers_Exceptions.csv",
+                "action": "create",
+                "format": "csv",
+                "compression": "none",
+                "header": false,
+                "asSingleFile": false,
+                "prefix": null,
+                "suffix": "_increment",
+                "hasQuotes": true,
+                "connectionId": null,
+                "runParameters": []
+              }
+            ],
+            "outputobjectdataflowoptions": [
+              {
+                "id": 1115248,
+                "key": "autoscalingAlgorithm",
+                "value": "THROUGHPUT_BASED"
+              },
+              {
+                "id": 1115245,
+                "key": "machineType",
+                "value": "n1-standard-1"
+              },
+              {
+                "id": 1115251,
+                "key": "maxNumWorkers",
+                "value": "1000"
+              },
+              {
+                "id": 1115246,
+                "key": "network",
+                "value": ""
+              },
+              {
+                "id": 1115250,
+                "key": "numWorkers",
+                "value": "1"
+              },
+              {
+                "id": 1115243,
+                "key": "region",
+                "value": "us-central1"
+              },
+              {
+                "id": 1115249,
+                "key": "serviceAccount",
+                "value": ""
+              },
+              {
+                "id": 1115247,
+                "key": "subnetwork",
+                "value": ""
+              },
+              {
+                "id": 1115244,
+                "key": "zone",
+                "value": ""
+              }
+            ]
+          }
+        ],
+        "datasources": [
+          {
+            "path": "/landingzone/Customers.csv",
+            "bucket": "dataprep-staging-0b9ad034-9473-4777-98f1-0f3e643d0dce",
+            "container": null,
+            "type": "gs",
+            "blobHost": null,
+            "isDynamicOrConverted": true,
+            "id": 629078,
+            "dynamicPath": "/landingzone/",
+            "cpProject": "dataprep-premium-demo",
+            "connectionId": null,
+            "isSchematized": true,
+            "isDynamic": true,
+            "isConverted": false,
+            "disableTypeInference": false,
+            "hasStructuring": true,
+            "parsingScriptId": 1282368,
+            "storageLocation": {
+              "fullUri": "gs://dataprep-staging-0b9ad034-9473-4777-98f1-0f3e643d0dce/landingzone/Customers.csv",
+              "id": 8146817,
+              "path": "/landingzone/Customers.csv",
+              "size": 219057,
+              "type": "gs",
+              "bucket": "dataprep-staging-0b9ad034-9473-4777-98f1-0f3e643d0dce",
+              "blobHost": null,
+              "container": null,
+              "hash": "b72ed8b3e0390a41c672f7732f5e2396558576f6",
+              "host": null,
+              "userinfo": null
+            },
+            "runParameters": [
+              {
+                "id": 36784,
+                "type": "path",
+                "runParameterEdit": {
+                  "value": {
+                    "variable": {
+                      "value": "Customers.csv"
+                    }
+                  },
+                  "insertionIndices": [
+                    {
+                      "index": 13,
+                      "order": 0
+                    }
+                  ],
+                  "id": 42446,
+                  "overrideKey": "FileName"
+                }
+              }
+            ]
+          },
+          {
+            "path": "/10EvnxBM1jXcJj62K7ovAdcA3I8JMOWGU8XUty4bU_C4",
+            "bucket": null,
+            "container": null,
+            "type": "gsheets",
+            "blobHost": null,
+            "isDynamicOrConverted": true,
+            "id": 646052,
+            "dynamicPath": null,
+            "cpProject": "dataprep-premium-demo",
+            "connectionId": null,
+            "isSchematized": true,
+            "isDynamic": false,
+            "isConverted": true,
+            "disableTypeInference": false,
+            "hasStructuring": true,
+            "parsingScriptId": 1316337,
+            "convertedSource": {
+              "selection": [
+                "Feuille 1"
+              ],
+              "id": 244
+            },
+            "storageLocation": {
+              "fullUri": "gsheets:///10EvnxBM1jXcJj62K7ovAdcA3I8JMOWGU8XUty4bU_C4",
+              "id": 8459838,
+              "path": "/10EvnxBM1jXcJj62K7ovAdcA3I8JMOWGU8XUty4bU_C4",
+              "size": null,
+              "type": "gsheets",
+              "bucket": null,
+              "blobHost": null,
+              "container": null,
+              "hash": "6076fc77e9db0b00c6f7340057fe1093e1fbd319",
+              "host": null,
+              "userinfo": null
+            },
+            "runParameters": []
+          }
+        ],
+        "webhookflowtasks": []
+      }
+    ]
+  },
+  "hash": "eUEAcdPLeak4JQx02kCAPU5NzOCR338Y"
+}
